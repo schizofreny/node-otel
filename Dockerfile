@@ -1,4 +1,4 @@
-FROM docker.io/node:16
+FROM docker.io/node:16-slim
 
 RUN npm install -g pnpm
 
