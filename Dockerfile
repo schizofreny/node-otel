@@ -1,4 +1,5 @@
-FROM docker.io/node:16-slim
+ARG NODE_VERSION
+FROM docker.io/node:$NODE_VERSION
 
 RUN npm install -g pnpm
 
