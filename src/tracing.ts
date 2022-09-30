@@ -7,7 +7,6 @@ import { SimpleSpanProcessor } from "@opentelemetry/sdk-trace-base"
 import { NodeTracerProvider } from "@opentelemetry/sdk-trace-node"
 import { SemanticResourceAttributes } from "@opentelemetry/semantic-conventions"
 import { PrismaInstrumentation } from "@prisma/instrumentation"
-import { PinoInstrumentation } from "@opentelemetry/instrumentation-pino"
 import { env } from "./env"
 
 diag.setLogger(new DiagConsoleLogger(), env.OPENTELEMETRY_LOG_LEVEL)
@@ -36,15 +35,7 @@ provider.addSpanProcessor(
 // Register your auto-instrumentors
 registerInstrumentations({
   tracerProvider: provider,
-  instrumentations: [
-    getNodeAutoInstrumentations({}),
-    new PrismaInstrumentation(),
-    new PinoInstrumentation({
-      logHook: (span, record) => {
-        record["resource.service.name"] = provider.resource.attributes["service.name"]
-      },
-    }),
-  ],
+  instrumentations: [getNodeAutoInstrumentations({}), new PrismaInstrumentation()],
 })
 
 // Register the provider globally
