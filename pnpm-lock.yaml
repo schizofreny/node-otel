@@ -5,6 +5,7 @@ specifiers:
   '@opentelemetry/auto-instrumentations-node': ^0.33.1
   '@opentelemetry/exporter-jaeger': ^1.7.0
   '@opentelemetry/instrumentation': ^0.33.0
+  '@opentelemetry/instrumentation-pino': ^0.32.0
   '@opentelemetry/resources': ^1.7.0
   '@opentelemetry/sdk-trace-base': ^1.7.0
   '@opentelemetry/sdk-trace-node': ^1.7.0
@@ -25,6 +26,7 @@ dependencies:
   '@opentelemetry/auto-instrumentations-node': 0.33.1_@opentelemetry+api@1.2.0
   '@opentelemetry/exporter-jaeger': 1.7.0_@opentelemetry+api@1.2.0
   '@opentelemetry/instrumentation': 0.33.0_@opentelemetry+api@1.2.0
+  '@opentelemetry/instrumentation-pino': 0.32.0_@opentelemetry+api@1.2.0
   '@opentelemetry/resources': 1.7.0_@opentelemetry+api@1.2.0
   '@opentelemetry/sdk-trace-base': 1.7.0_@opentelemetry+api@1.2.0
   '@opentelemetry/sdk-trace-node': 1.7.0_@opentelemetry+api@1.2.0
