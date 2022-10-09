@@ -1,6 +1,7 @@
 name: ci
 on:
   release:
+    types: [published, created, released]
   push:
     branches: [master]
 jobs:
