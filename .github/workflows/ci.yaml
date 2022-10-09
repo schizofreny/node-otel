@@ -12,6 +12,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Release name
+        id: tag
+        run: |
+          # Default GITHUB_SHA
+          tag="${GITHUB_SHA}"
+
+          # If release parse the tag name from GITHUB_REF
+          if [ "${GITHUB_EVENT_NAME}" == "release" ]; then
+            ref="${GITHUB_REF}"
+            tag=$(echo $GITHUB_REF | sed 's/refs\/tags\///g')
+          fi
+
+          echo "::set-output name=tag::$tag"
       # setup docker
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -45,4 +58,4 @@ jobs:
           platforms: linux/amd64,linux/arm64
           build-args: NODE_VERSION=${{ matrix.node-version }}
           tags: |
-            ghcr.io/schizofreny/node-otel:${{ matrix.node-version }}-latest
+            ghcr.io/schizofreny/node-otel:${{ matrix.node-version }}-${{ steps.tag.outputs.tag }}
